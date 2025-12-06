@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import getListings, { IListingParams } from "./actions/getListings";
 import Container from "./components/Container";
 import EmptyState from "./components/EmptyState";
@@ -31,7 +32,7 @@ const Home  = async ( { searchParams } : HomeProps) => {
             2xl:grid-cols-6
             gap-8
         ">
-            {listings.map((listing) => {
+            {listings.map((listing : any) => {
               return (
                 <ListingCard 
                   currentUser={currentUser}

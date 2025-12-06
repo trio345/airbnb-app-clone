@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import axios from "axios";
@@ -54,7 +55,7 @@ const TripsClient: React.FC<TripsClientProps> = ({reservations, currentUser}) =>
                     2xl:grid-cols-6
                     gap-8
             ">
-                {reservations.map((reservation) => (
+                {reservations.map((reservation : any) => (
                     <ListingCard 
                         key={reservation.id}
                         data={reservation.listing}

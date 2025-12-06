@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import axios from "axios";
@@ -54,7 +55,7 @@ const PropertiesClient: React.FC<PropertiesClientProps> = ({ listings, currentUs
                     2xl:grid-cols-6
                     gap-8
             ">
-                {listings.map((listing) => (
+                {listings.map((listing : any) => (
                     <ListingCard 
                         key={listing.id}
                         data={listing}
