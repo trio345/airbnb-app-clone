@@ -13,12 +13,18 @@ import {
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import Modal from "./Modal";
 import Heading from "../Heading";
+import Input from "@/app/components/inputs/input";
+import toast from "react-hot-toast";
+import Button from "../Button";
+import { signIn } from "next-auth/react";
+import useLoginModal from "@/app/hooks/useLoginModal";
 
 
 const RegisterModal = () => {
+    const [isLoading, setIsLoading] = useState(false);
 
     const registerModal = useRegisterModal();
-    const [isLoading, setIsLoading] = useState(false);
+    const loginModal = useLoginModal();
 
     const {
         register,
@@ -34,15 +40,22 @@ const RegisterModal = () => {
         }
     });
 
+    const toggle = useCallback(() => {
+        registerModal.onClose();
+        loginModal.onOpen();
+    }, []);
+
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         setIsLoading(true);
         
         axios.post('/api/register', data)
             .then(() => {
-                registerModal.onClose()
+                toast.success("You'r account successfully registered!")
+                registerModal.onClose();
+                loginModal.onOpen();
             })
             .catch((error) => {
-                console.log(error);
+                toast.error("Something went wrong!")
             })
             .finally(() => {
                 setIsLoading(false);
@@ -54,10 +67,71 @@ const RegisterModal = () => {
             <Heading 
                 title="Welcome to Airbnb"
                 subtitle="Create an Account!"
-
             />
+            <Input 
+                id="email"
+                label="Email"
+                disabled={isLoading}
+                register={register}
+                errors={errors}
+                required            
+            />
+            <Input 
+                id="name"
+                label="Name"
+                disabled={isLoading}
+                register={register}
+                errors={errors}
+                required            
+            />
+            <Input 
+                id="password"
+                type="password"
+                label="password"
+                disabled={isLoading}
+                register={register}
+                errors={errors}
+                required            
+            />
+
         </div>   
-    )
+    );
+
+    const footerContent = (
+        <div className="flex flex-col gap-4 mt-3">
+            <hr />
+
+            <Button 
+                outline
+                label="Continue with Google"
+                icon={FcGoogle}
+                onClick={() => signIn('google')}
+            />
+             <Button 
+                outline
+                label="Continue with Github"
+                icon={AiFillGithub}
+                onClick={() => {}}
+            />
+            
+            <div className="flex flex-row justify-center gap-2">
+                <div>
+                    Already have an account?
+                </div>
+                <div 
+                    onClick={toggle}
+                    className="
+                        text-neutral-800
+                        cursor-pointer
+                        hover:underline
+                        "
+                    >
+                    Log in
+                </div>
+            </div>  
+
+        </div>
+    );
 
     return ( 
         <Modal 
@@ -68,6 +142,7 @@ const RegisterModal = () => {
             onClose={registerModal.onClose}
             onSubmit={handleSubmit(onSubmit)}
             body={bodyContent}
+            footer={footerContent}
         />
      );
 }

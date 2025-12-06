@@ -13,7 +13,7 @@ interface ModalProps {
     body?: React.ReactElement;
     footer?: React.ReactElement;
     actionLabel: string;
-    disabled: boolean;
+    disabled?: boolean;
     secondaryAction?: () => void;
     secondaryActionLabel?: string;
 }
@@ -57,12 +57,11 @@ const Modal: React.FC<ModalProps> = ({
     }, [disabled, onSubmit]);
 
     const handleSecondaryAction = useCallback(() => {
-        if (disabled || !secondaryActionLabel) {
+        if (disabled || !secondaryActionLabel || !secondaryAction) {
             return;
         }
-
-        
-    }, [disabled, secondaryActionLabel]);
+        secondaryAction();
+    }, [disabled, secondaryActionLabel, secondaryAction]);
 
     if (!isOpen) {
         return;
@@ -131,7 +130,7 @@ const Modal: React.FC<ModalProps> = ({
                                     rounded-t
                                     justify-center
                                     relative
-                                    border-b-[1px]
+                                    border-b
                                 ">
                                 <button
                                     onClick={handleClose}
@@ -178,8 +177,8 @@ const Modal: React.FC<ModalProps> = ({
                                         onClick={handleSubmit}
                                         label={actionLabel}
                                     />
-                                    
                                 </div>
+                                { footer }
                             </div>
                         </div>
                     </div>
