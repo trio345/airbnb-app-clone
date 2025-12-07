@@ -1,6 +1,6 @@
 export { default } from 'next-auth/middleware';
 
-export const config = {
+export const proxy = {
     matcher: [
         "/trips",
         "/reservations",
