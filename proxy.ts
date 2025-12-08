@@ -1,10 +1,20 @@
 
-import { NextResponse, NextRequest } from 'next/server'
-export { default } from 'next-auth/middleware';
+import withAuth from 'next-auth/middleware';
+import { NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server';
+export { withAuth } from 'next-auth/middleware';
 
-export function proxy(request: NextRequest) {
-  return NextResponse.redirect(new URL('/', request.url))
-}
+
+export default withAuth(
+    function middleware(req: NextRequest) {
+        return NextResponse.next();
+    },
+    {
+        pages: {
+            signIn: '/'
+        }
+    }
+)
 
 export const config = {
     matcher: [
