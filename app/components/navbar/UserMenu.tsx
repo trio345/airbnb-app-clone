@@ -94,6 +94,7 @@ const UserMenu = ({currentUser} : UserMenuProps) => {
                         top-12
                         text-sm
                     "
+                    data-testid="user-menu-button"
                 >
                     <div className="flex flex-col cursor-pointer">
                         {
