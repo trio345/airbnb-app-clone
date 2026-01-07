@@ -73,6 +73,7 @@ const UserMenu = ({currentUser} : UserMenuProps) => {
                         hover:shadow-md
                         transition
                     "
+                    data-testid="user-menu-button"
                 >
                     <AiOutlineMenu />
                     <div className="hidden md:block">
@@ -94,7 +95,6 @@ const UserMenu = ({currentUser} : UserMenuProps) => {
                         top-12
                         text-sm
                     "
-                    data-testid="user-menu-button"
                 >
                     <div className="flex flex-col cursor-pointer">
                         {
@@ -103,27 +103,33 @@ const UserMenu = ({currentUser} : UserMenuProps) => {
                                     <MenuItem 
                                         onClick={() => router.push('/trips')}
                                         label="My trips"
+                                        testid="my-trips"
                                     />
                                     <MenuItem 
                                         onClick={() => router.push('/favorites')}
                                         label="My favorites"
+                                        testid="my-favorites"
                                     />
                                     <MenuItem 
                                         onClick={() => router.push('/reservations')}
                                         label="My reservations"
+                                        testid="my-reservations"
                                     />
                                     <MenuItem 
                                         onClick={() => router.push('/properties')}
                                         label="My properties"
+                                        testid="my-properties"
                                     />
                                     <MenuItem 
                                         onClick={() => {}}
                                         label="Airbnb my home"
+                                        testid="airbnb-my-home"
                                     />
                                     <hr />
                                     <MenuItem 
                                         onClick={() => signOut()}
                                         label="Logout"
+                                        testid="logout"
                                     />
                                 </>
                             ) : (
@@ -131,10 +137,12 @@ const UserMenu = ({currentUser} : UserMenuProps) => {
                                     <MenuItem 
                                         onClick={loginModal.onOpen}
                                         label="Login"
+                                        testid="login"
                                     />
                                     <MenuItem 
                                         onClick={registerModal.onOpen}
                                         label="Sign Up"
+                                        testid="sign-up"
                                     />
                                 </>
                             )

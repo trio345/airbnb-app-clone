@@ -2,12 +2,14 @@
 
 interface MenuItemProps {
     onClick: () => void,
-    label: string
+    label: string,
+    testid: string
 }
 
 const MenuItem: React.FC<MenuItemProps> = ({
     onClick,
-    label
+    label,
+    testid
 }) => {
     return ( 
         <div
@@ -19,6 +21,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
                 transition
                 font-semibold
             "
+            data-testid={testid}
         >
             {label}
         </div>
