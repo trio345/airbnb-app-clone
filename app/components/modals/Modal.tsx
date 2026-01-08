@@ -72,7 +72,7 @@ const Modal: React.FC<ModalProps> = ({
     return ( 
         <> 
             <div 
-                data-testId={test_id}
+                data-testid={test_id}
                 className="
                     justify-center
                     items-center
