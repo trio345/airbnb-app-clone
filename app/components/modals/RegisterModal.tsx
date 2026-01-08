@@ -139,7 +139,7 @@ const RegisterModal = () => {
             isOpen={registerModal.isOpen}
             title="Register"
             actionLabel="Continue"
-            test_id="register"
+            test_id="register-modal"
             onClose={registerModal.onClose}
             onSubmit={handleSubmit(onSubmit)}
             body={bodyContent}
