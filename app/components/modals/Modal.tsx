@@ -16,6 +16,7 @@ interface ModalProps {
     disabled?: boolean;
     secondaryAction?: () => void;
     secondaryActionLabel?: string;
+    test_id?: string;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -28,7 +29,8 @@ const Modal: React.FC<ModalProps> = ({
     actionLabel,
     disabled,
     secondaryAction,
-    secondaryActionLabel
+    secondaryActionLabel,
+    test_id
 }) => {
     const [showModal, setShowModal] = useState(isOpen);
 
@@ -70,6 +72,7 @@ const Modal: React.FC<ModalProps> = ({
     return ( 
         <> 
             <div 
+                data-testId={test_id}
                 className="
                     justify-center
                     items-center

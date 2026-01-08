@@ -135,11 +135,12 @@ const LoginModal = () => {
             disabled={isLoading}
             isOpen={loginModal.isOpen}
             title="Login"
+            test_id="login"
             actionLabel="Continue"
             onClose={loginModal.onClose}
             onSubmit={handleSubmit(onSubmit)}
             body={bodyContent}
-            footer={footerContent}
+            footer={footerContent}            
         />
      );
 }

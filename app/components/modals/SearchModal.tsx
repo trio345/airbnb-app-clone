@@ -176,6 +176,7 @@ const SearchModal = () => {
 
     return (
         <Modal 
+            test_id='filters'
             isOpen={searchModal.isOpen}
             onClose={searchModal.onClose}
             onSubmit={onSubmit}
