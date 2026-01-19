@@ -76,15 +76,17 @@ const Search = () => {
                 "
             >
                     <div
-                    className="
-                        text-sm
-                        font-semibold
-                        px-6
-                    "
-                    >
-                     {locationLabel}
-                 </div>
+                        data-testid="location-text"
+                        className="
+                            text-sm
+                            font-semibold
+                            px-6
+                        "
+                        >
+                        {locationLabel}
+                    </div>
                 <div
+                    data-testid="duration-text"
                     className="
                         hidden
                         sm:block
@@ -110,7 +112,7 @@ const Search = () => {
                         gap-3
                     "
                 >   
-                    <div className="hidden sm:block">{guestLabel}</div>
+                    <div data-testid="guest-text" className="hidden sm:block">{guestLabel}</div>
                     <div
                         className="
                             p-2
