@@ -54,6 +54,7 @@ const Search = () => {
     return ( 
         <div
             onClick={searchModal.onOpen}
+            data-testid="search-trigger"
             className="
                 border
                 w-full
@@ -64,7 +65,6 @@ const Search = () => {
                 hover:shadow-md
                 transition
                 cursor-pointer
-
             "
         >
             <div
